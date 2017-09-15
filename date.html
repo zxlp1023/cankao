@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+    <!--<script src="lib/jquery-2.1.4.js"></script>-->
+    <script type="text/javascript">
+        // 日期，在原有日期基础上，增加days天数，默认增加1天
+        function addDate(date, days) {
+            if (days == undefined || days == '') {
+                days = 1;
+            }
+            var date = new Date(date);
+            date.setDate(date.getDate() + days);
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+
+            return   getFormatDate(month) + '-' + getFormatDate(day);
+            // date.getFullYear() + '-' +
+
+        }
+        // 日期月份/天的显示，如果是1位数，则在前面加上'0'
+        function getFormatDate(arg) {
+            if (arg == undefined || arg == '') {
+                return '';
+            }
+
+            var re = arg + '';
+            if (re.length < 2) {
+                re = '0' + re;
+            }
+
+            return re;
+        }
+
+        var myDate =  Date.now();
+        var x = [];
+        for (var i = 0; i < 21; i++){
+            myDate=addDate(myDate,1);
+            x[i] =myDate.split('-');
+            console.log(
+                x[i][0] + '月' + x[i][1] + '日'
+            );
+        }
+//        x[0] + '月' + x[1] + '日';
+
+//        console.log(x[0][0]+'月' + x[0][1] + '日');
+
+    </script>
+</body>
+</html>
